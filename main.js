@@ -1,12 +1,15 @@
-song = "";
+song1="";
+song2="";
 leftWristX = 0;
 leftWristY = 0;
 rightWristX = 0;
 rightWristY = 0;
-scoreLeftWrist = 0;
-function preload() 
-{
-    song = loadSound('music.mp3');
+song1status="";
+song2status="";
+
+function preload() {
+    song1=loadSound("on.mp3")
+    song2=loadSound("ptd.mp3")
 }
 
 function setup() {
@@ -20,32 +23,29 @@ function setup() {
     poseNet.on('pose', gotPoses);
 }
 
-function modelLoaded() {
-    console.log('PoseNet Is Intilaised');
-}
-
 function draw() {
     image(video, 0, 0, 600, 500);
-
     fill("#FF0000");
     stroke("#FF0000");
+
+    song1status = song1.isPlaying()
+    song2status = song2.isPlaying()
 
     if(scoreLeftWrist > 0.2)
     {
        circle(leftWristX, leftWristY, 20);
-       InNumberleftWristY = Number(leftWristY);
-       remove_decimals = floor(InNumberleftWristY);
-       volume = remove_decimals/500;
-       document.getElementById("volume").innerHTML = "Volume = " + volume;
-       song.setVoume(volume);
+       song1.stop()
+       if(song2status==false) 
+       {
+           song2.play()
+           document.getElementById("song").innerHTML = "Song = Permission To Dance ";
+       }
+       
     }
 }
 
-function play()
-{
-    song.play();
-    song.setVolume(1);
-    song.rate(1);
+function modelLoaded() {
+    console.log('PoseNet Is Intilaised');
 }
 
 function gotPoses(results)
@@ -65,3 +65,4 @@ function gotPoses(results)
         console.log("rightWristX = " + rightWristX +" rightWristY = "+ rightWristY)
     }
 }
+

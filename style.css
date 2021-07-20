@@ -1,53 +1,30 @@
-body
-{
-    background-size: cover;
-}
 .heading
 {
-    font-size: 23px;
-    width: 100%;
-    margin: 0px;
+  font-size: 23px;
+  width: 100%;
+  margin: 0px;
+    user-select: all;
 }
 .note
 {
-    font-size: 15px;
-    color: black;
+  font-size: 15px;
+  color: gainsboro;
+  user-select: all;
 }
-.div_speed
+.heading::selection
 {
-    float: left;
+    background-color: burlywood;
 }
-.div_speed_img
+.note::selection
 {
-    width: 200px;
-    border-radius: 100px;
+    background-color: burlywood;
 }
-#speed
+body
 {
-    font-size: 23px;
-    margin: 15px;
+  background-size: cover;	
 }
-.div_volume
+#song
 {
-    float: right;
-}
-.div_volume_img
-{
-    width: 200px;
-    border-radius: 100px;
-}
-#volume
-{
-    font-size: 23px;
-    margin: 15px;
-}
-.play_button
-{
-    width: 130px;
-    font-size: 25px;
-}
-canvas
-{
-    border: 5px solid white;
-    border-radius: 20px;
+  font-size: 23px;
+  margin: 15px;
 }
